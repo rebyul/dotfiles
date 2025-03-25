@@ -1,0 +1,20 @@
+
+# Always extract audio
+# -x
+
+# Do not copy the mtime
+--no-mtime
+
+# Save all videos under Movies directory in your home directory
+-o ~/Downloads/youtube-dl/%(title)s.%(ext)s
+
+# Highest audio quality
+--audio-quality 0
+--embed-thumbnail
+--add-metadata
+
+-f (bestvideo[height>2160][vcodec^=av01]/bestvideo[height>2160][vcodec^=vp9]/bestvideo[height>1440][vcodec^=av01]/bestvideo[height>1440][vcodec^=vp9][fps>30]/bestvideo[height>1440][vcodec^=vp9]/bestvideo[height>1080][vcodec^=av01]/bestvideo[height>1080][vcodec^=vp9][fps>30]/bestvideo[height>1080][vcodec^=vp9]/bestvideo[height>720][vcodec^=av01]/bestvideo[height>720][vcodec^=vp9][fps>30]/bestvideo[height>720][vcodec^=vp9]/bestvideo[height>240][vcodec^=av01]/bestvideo[vcodec^=vp9][fps>30]/bestvideo[height>240][vcodec^=vp9]/best[height>240]/bestvideo[vcodec^=av01]/bestvideo[vcodec^=vp9]/bestvideo)+(bestaudio[asr=48000]/bestaudio)/bestaudio[ext=opus]/best
+--merge-output-format mkv
+
+# parallelize
+--concurrent-fragments 12
