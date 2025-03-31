@@ -10,3 +10,5 @@
 	required = true
 [safe]
 	directory = *
+[init]
+	defaultBranch = main
