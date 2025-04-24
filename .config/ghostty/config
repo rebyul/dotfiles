@@ -20,8 +20,6 @@
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
 # font-family = Iosevka
-# font-family = CaskaydiaCove Nerd Font Mono
-font-family = Monaco
 # window-padding-x = 2
 #
 # # Spacing around the equals sign does not matter.
@@ -44,5 +42,19 @@ font-family = Monaco
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-macos-option-as-alt=true
-macos-titlebar-style=hidden
+# Typography
+font-size = 14
+font-family = MonacoLigaturized Nerd Font
+# font-family = MonacoLigaturized Nerd Font Mono
+# font-family = Menlo
+# font-family = Monaco
+# font-family = CaskaydiaCove NF Mono
+
+# Color config
+theme = catppuccin-macchiato
+
+# macos options
+macos-option-as-alt = true
+macos-titlebar-style = transparent
+macos-auto-secure-input = true
+
