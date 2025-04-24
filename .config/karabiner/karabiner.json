@@ -83,6 +83,7 @@
                     },
                     {
                         "description": "Caps Lock Tiles with Direct Toggle (dont need with MT(MOD_LCTL | MOD_LALT | MOD_LGUI,KC_ESC))",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -737,8 +738,7 @@
                         "product_id": 131,
                         "vendor_id": 5426
                     },
-                    "ignore": false,
-                    "mouse_flip_vertical_wheel": true
+                    "ignore": false
                 }
             ],
             "fn_function_keys": [
