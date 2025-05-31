@@ -44,17 +44,16 @@
 
 # Typography
 font-size = 14
-font-family = MonacoLigaturized Nerd Font
 # font-family = MonacoLigaturized Nerd Font Mono
 # font-family = Menlo
-# font-family = Monaco
+font-family = Monaco
 # font-family = CaskaydiaCove NF Mono
 
 # Color config
 theme = catppuccin-macchiato
 
 # macos options
-macos-option-as-alt = true
+macos-option-as-alt = left
 macos-titlebar-style = transparent
 macos-auto-secure-input = true
 
