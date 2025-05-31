@@ -121,7 +121,7 @@ ZGEN_RESET_ON_CHANGE=(
   "${HOME}/.zshrc"
 )
 
-# Diable as it makes it difficult to ssh to server which starts its own tmux
+# Disable as it makes it difficult to ssh to server which starts its own tmux
 # ZSH_TMUX_AUTOSTART=true 
 
 # load zgenom
@@ -223,4 +223,6 @@ if [ -f '/Users/donghankim/workspace/google-cloud-sdk/completion.zsh.inc' ]; the
 # fnm
 export PATH="/Users/donghankim/Library/Application Support/fnm:$PATH"
 eval "`fnm env --use-on-cd --version-file-strategy=recursive --shell zsh`"
+
+source ~/completion-for-pnpm.zsh
 
