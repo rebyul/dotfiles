@@ -5,3 +5,4 @@ alias nvm=fnm
 alias yt-audio='yt-dlp --config-location=~/.config/yt-dlp/audio-config'
 alias pn=pnpm
 alias docker-compose='docker compose'
+alias ldk='lazydocker'
