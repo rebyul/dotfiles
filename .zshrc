@@ -81,6 +81,7 @@ export PATH=$PATH:/Users/donghankim/workspace/flutter/bin:/opt/homebrew/opt/make
 
 plugins=(
   # nvm
+  # macos
 )
 
 # source $ZSH/oh-my-zsh.sh
@@ -117,7 +118,7 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # if any of these files are modified, re-save zgenom
-ZGEN_RESET_ON_CHANGE=(
+ZGENOM_RESET_ON_CHANGE=(
   "${HOME}/.zshrc"
 )
 
@@ -136,17 +137,18 @@ if ! zgenom saved; then
     zgenom ohmyzsh
 
     # plugins
-    zgenom oh-my-zsh plugins/git
-    # zgenom oh-my-zsh plugins/nvm
-    zgenom oh-my-zsh plugins/sudo
-    zgenom oh-my-zsh plugins/tmux
-    zgenom oh-my-zsh plugins/macos
-    zgenom oh-my-zsh plugins/docker
-    zgenom oh-my-zsh plugins/docker-compose
-    zgenom oh-my-zsh plugins/dotnet
-    zgenom oh-my-zsh plugins/command-not-found
-    zgenom oh-my-zsh plugins/colored-man-pages
-    zgenom oh-my-zsh plugins/deno
+    zgenom ohmyzsh plugins/git
+    # zgenom ohmyzsh plugins/nvm
+    zgenom ohmyzsh plugins/sudo
+    zgenom ohmyzsh plugins/macos
+    zgenom ohmyzsh plugins/tmux
+    zgenom ohmyzsh plugins/docker
+    zgenom ohmyzsh plugins/docker-compose
+    zgenom ohmyzsh plugins/dotnet
+    zgenom ohmyzsh plugins/command-not-found
+    zgenom ohmyzsh plugins/colored-man-pages
+    zgenom ohmyzsh plugins/deno
+    zgenom ohmyzsh --completions custom/plugins/pnpm
 
     # zgenom load agkozak/zsh-z
     # completions
@@ -163,7 +165,7 @@ EOPLUGINS
     # ^ can't indent this EOPLUGINS
 
     # theme
-    # zgenom oh-my-zsh themes/agnoster
+    # zgenom ohmyzsh themes/agnoster
 
     # save all to init script
     zgenom save
@@ -224,5 +226,5 @@ if [ -f '/Users/donghankim/workspace/google-cloud-sdk/completion.zsh.inc' ]; the
 export PATH="/Users/donghankim/Library/Application Support/fnm:$PATH"
 eval "`fnm env --use-on-cd --version-file-strategy=recursive --shell zsh`"
 
-source ~/completion-for-pnpm.zsh
+# source ~/completion-for-pnpm.zsh
 
