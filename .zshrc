@@ -50,7 +50,7 @@ export PATH=$PATH:/Users/donghankim/workspace/flutter/bin:/opt/homebrew/opt/make
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -118,17 +118,15 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # if any of these files are modified, re-save zgenom
-ZGENOM_RESET_ON_CHANGE=(
-  "${HOME}/.zshrc"
-)
+ZGEN_RESET_ON_CHANGE=(${HOME}/.zshrc)
 
 # Disable as it makes it difficult to ssh to server which starts its own tmux
 # ZSH_TMUX_AUTOSTART=true 
 
 # load zgenom
 source "${HOME}/.zgenom/zgenom.zsh"
-
-# if the init scipt doesn't exist
+    
+# if the init script doesn't exist
 if ! zgenom saved; then
     echo "Creating a zgenom save"
     zgenom compdef
@@ -148,13 +146,30 @@ if ! zgenom saved; then
     zgenom ohmyzsh plugins/command-not-found
     zgenom ohmyzsh plugins/colored-man-pages
     zgenom ohmyzsh plugins/deno
-    zgenom ohmyzsh --completions custom/plugins/pnpm
-
+    
     # zgenom load agkozak/zsh-z
     # completions
     zgenom load zsh-users/zsh-completions
     zgenom load jscutlery/nx-completion
-    zgenom ohmyzsh --completions plugins/bat
+    
+    # Create fzf completions if it doesn't exist
+    # Double [[]] is more modern zsh/bash
+    if [[ ! -e "$ZSH_CUSTOM/completions/_fzf" ]]; then
+        (fzf --zsh) > $ZSH_CUSTOM/completions/_fzf
+    fi
+   
+    if [[ ! -e "$ZSH_CUSTOM/completions/_bat" ]]; then
+        (bat --completion zsh) > $ZSH_CUSTOM/completions/_bat
+    fi
+
+    if [[ ! -e "$ZSH_CUSTOM/completions/_rg" ]]; then
+        (rg --generate complete-zsh) > $ZSH_CUSTOM/completions/_rg
+    fi
+    if [[ ! -e "$ZSH_CUSTOM/completions/_pnpm" ]]; then
+        (pnpm completion zsh) > $ZSH_CUSTOM/completions/_pnpm
+    fi
+
+    zgenom load --completion $ZSH_CUSTOM/completions
 
     # bulk load
     zgenom loadall <<EOPLUGINS
