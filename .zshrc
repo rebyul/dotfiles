@@ -5,7 +5,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # Python path + gmake -> make
-export PATH=$PATH:/Users/donghankim/workspace/flutter/bin:/opt/homebrew/opt/make/libexec/gnubin:/usr/local/go/bin:~/go/bin
+export PATH=$PATH:/Users/donghankim/workspace/flutter/bin:/opt/homebrew/opt/make/libexec/gnubin:/usr/local/go/bin:~/go/bin:/opt/homebrew/opt/postgresql@15/bin
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -114,7 +114,7 @@ fi
 # starship init
 eval "$(starship init zsh)"
 
-#zoxide init
+#z oxide init
 eval "$(zoxide init zsh)"
 
 # if any of these files are modified, re-save zgenom
@@ -152,7 +152,7 @@ if ! zgenom saved; then
     zgenom load zsh-users/zsh-completions
     zgenom load jscutlery/nx-completion
     
-    # Create fzf completions if it doesn't exist
+    # Create completions if it doesn't exist
     # Double [[]] is more modern zsh/bash
     if [[ ! -e "$ZSH_CUSTOM/completions/_fzf" ]]; then
         (fzf --zsh) > $ZSH_CUSTOM/completions/_fzf
@@ -240,6 +240,4 @@ if [ -f '/Users/donghankim/workspace/google-cloud-sdk/completion.zsh.inc' ]; the
 # fnm
 export PATH="/Users/donghankim/Library/Application Support/fnm:$PATH"
 eval "`fnm env --use-on-cd --version-file-strategy=recursive --shell zsh`"
-
-# source ~/completion-for-pnpm.zsh
 
