@@ -84,7 +84,7 @@ plugins=(
   # macos
 )
 
-# source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -241,3 +241,9 @@ if [ -f '/Users/donghankim/workspace/google-cloud-sdk/completion.zsh.inc' ]; the
 export PATH="/Users/donghankim/Library/Application Support/fnm:$PATH"
 eval "`fnm env --use-on-cd --version-file-strategy=recursive --shell zsh`"
 
+# bun completions
+[ -s "/Users/donghankim/.bun/_bun" ] && source "/Users/donghankim/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

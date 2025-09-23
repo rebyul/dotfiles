@@ -4,8 +4,17 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- config.term = "xterm-256color"
+-- config.set_environment_variables = {
+-- 	COLORTERM = "truecolor",
+-- }
+config.term = "xterm-256color"
+config.set_environment_variables = {
+	COLORTERM = "truecolor",
+}
+
 -- Fonts
-config.font_size = 12
+config.font_size = 13
 config.font = wezterm.font("Monaco")
 
 -- Colors

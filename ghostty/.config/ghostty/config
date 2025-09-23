@@ -50,7 +50,7 @@ font-family = Monaco
 # font-family = CaskaydiaCove NF Mono
 
 # Color config
-theme = catppuccin-macchiato
+theme = catppuccin-mocha.conf
 
 # macos options
 macos-option-as-alt = left
