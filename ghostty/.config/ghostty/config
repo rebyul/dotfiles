@@ -57,3 +57,4 @@ macos-option-as-alt = left
 macos-titlebar-style = transparent
 macos-auto-secure-input = true
 
+# keybind = global:cmd+backspace=toggle_quic_terminal

@@ -247,3 +247,6 @@ eval "`fnm env --use-on-cd --version-file-strategy=recursive --shell zsh`"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+ulimit -n 65536 2>/dev/null
+
