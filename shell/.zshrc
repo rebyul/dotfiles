@@ -188,14 +188,6 @@ EOPLUGINS
     zgenom compile "$HOME/.zshrc"
 fi
 
-# pnpm
-export PNPM_HOME="/Users/donghankim/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 # Set up fzf key bindings and fuzzy completion
 export FZF_DEFAULT_OPTS='--tmux'
 # Preview file content using bat (https://github.com/sharkdp/bat)
@@ -205,7 +197,7 @@ export FZF_CTRL_T_OPTS="
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
   # CTRL-Y to copy the command into clipboard using pbcopy
 export FZF_CTRL_R_OPTS="
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcoy)+abort'
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
   # Print tree structure in the preview window
@@ -237,10 +229,6 @@ if [ -f '/Users/donghankim/workspace/google-cloud-sdk/path.zsh.inc' ]; then . '/
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/donghankim/workspace/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/donghankim/workspace/google-cloud-sdk/completion.zsh.inc'; fi
 
-# fnm
-export PATH="/Users/donghankim/Library/Application Support/fnm:$PATH"
-eval "`fnm env --use-on-cd --version-file-strategy=recursive --shell zsh`"
-
 # bun completions
 [ -s "/Users/donghankim/.bun/_bun" ] && source "/Users/donghankim/.bun/_bun"
 
@@ -248,5 +236,21 @@ eval "`fnm env --use-on-cd --version-file-strategy=recursive --shell zsh`"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-ulimit -n 65536 2>/dev/null
+export PATH="$HOME/.local/bin:$PATH"
+
+# fnm
+# Moved fnm before pnpm to ensure pnpm binaries take precedence.
+export PATH="/Users/donghankim/Library/Application Support/fnm:$PATH"
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
+
+# pnpm
+export PNPM_HOME="/Users/donghankim/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"
 
