@@ -1,0 +1,13 @@
+# yt-dlp audio configuration
+-x
+--audio-format flac
+--audio-quality 0
+--embed-thumbnail
+--add-metadata
+--write-thumbnail
+--convert-thumbnails jpg
+--no-mtime
+--merge-output-format mkv
+--concurrent-fragments 12
+-o ~/Downloads/yt-dlp/audio/%(title)s.%(ext)s
+-f (bestvideo[height>2160][vcodec^=av01]/bestvideo[height>2160][vcodec^=vp9]/bestvideo[height>1440][vcodec^=av01]/bestvideo[height>1440][vcodec^=vp9][fps>30]/bestvideo[height>1440][vcodec^=vp9]/bestvideo[height>1080][vcodec^=av01]/bestvideo[height>1080][vcodec^=vp9][fps>30]/bestvideo[height>1080][vcodec^=vp9]/bestvideo[height>720][vcodec^=av01]/bestvideo[height>720][vcodec^=vp9][fps>30]/bestvideo[height>720][vcodec^=vp9]/bestvideo[height>240][vcodec^=av01]/bestvideo[vcodec^=vp9][fps>30]/bestvideo[height>240][vcodec^=vp9]/best[height>240]/bestvideo[vcodec^=av01]/bestvideo[vcodec^=vp9]/bestvideo)+(bestaudio[asr=48000]/bestaudio)/bestaudio[ext=opus]/best
