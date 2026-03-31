@@ -5,7 +5,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # Python path + gmake -> make
-export PATH=$PATH:/Users/donghankim/workspace/flutter/bin:/opt/homebrew/opt/make/libexec/gnubin:/usr/local/go/bin:~/go/bin:/opt/homebrew/opt/postgresql@15/bin
+export PATH=$PATH:$HOME/workspace/flutter/bin:/opt/homebrew/opt/make/libexec/gnubin:/usr/local/go/bin:~/go/bin:/opt/homebrew/opt/postgresql@15/bin
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -118,7 +118,11 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # if any of these files are modified, re-save zgenom
-ZGEN_RESET_ON_CHANGE=(${HOME}/.zshrc)
+if [ -L "${HOME}/.zshrc" ]; then
+    ZGEN_RESET_ON_CHANGE=(${HOME}/.zshrc)
+else
+    ZGEN_RESET_ON_CHANGE=(${HOME}/dotfiles/mac/shell/.zshrc)
+fi
 
 # Disable as it makes it difficult to ssh to server which starts its own tmux
 # ZSH_TMUX_AUTOSTART=true 
@@ -154,10 +158,6 @@ if ! zgenom saved; then
     
     # Create completions if it doesn't exist
     # Double [[]] is more modern zsh/bash
-    if [[ ! -e "$ZSH_CUSTOM/completions/_fzf" ]]; then
-        (fzf --zsh) > $ZSH_CUSTOM/completions/_fzf
-    fi
-   
     if [[ ! -e "$ZSH_CUSTOM/completions/_bat" ]]; then
         (bat --completion zsh) > $ZSH_CUSTOM/completions/_bat
     fi
@@ -224,13 +224,13 @@ fi
 # unsetopt nomatch
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/donghankim/workspace/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/donghankim/workspace/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/workspace/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/workspace/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/donghankim/workspace/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/donghankim/workspace/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/workspace/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/workspace/google-cloud-sdk/completion.zsh.inc"; fi
 
 # bun completions
-[ -s "/Users/donghankim/.bun/_bun" ] && source "/Users/donghankim/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -240,17 +240,16 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # fnm
 # Moved fnm before pnpm to ensure pnpm binaries take precedence.
-export PATH="/Users/donghankim/Library/Application Support/fnm:$PATH"
+export PATH="$HOME/Library/Application Support/fnm:$PATH"
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 
 # pnpm
-export PNPM_HOME="/Users/donghankim/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.cargo/env"
 
