@@ -1,6 +1,3 @@
 .DS_Store
 **/*.log
-domserver/.tmux/plugins/*
-!domserver/.tmux/plugins/.gitkeep
 domserver/.config/go/telemetry/
-domserver/.vim/.netrwhist
